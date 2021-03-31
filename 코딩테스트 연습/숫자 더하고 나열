@@ -1,0 +1,28 @@
+func solution(_ numbers:[Int]) -> [Int] {
+    var result = [Int]()
+    var array = [Int]()
+    for i in 0..<numbers.count {
+        for j in i..<numbers.count {
+            if i == j {
+                continue
+            } else {
+                result.append(numbers[i]+numbers[j])
+            }
+        }
+    }
+    result.sort(by: {$0 < $1})
+    for i in 0..<result.count {
+        for j in i..<result.count{
+            if i == j {continue}
+            if result[i] == result[j] {
+                array.append(j)
+                break
+            }
+        }
+    }
+    array.sort(by: {$0 > $1})
+    for k in array {
+        result.remove(at: k)
+    }
+    return result
+}
