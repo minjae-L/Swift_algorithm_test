@@ -1,0 +1,133 @@
+선행 스킬 순서 skill과 유저들이 만든 스킬트리1를 담은 배열 skill_trees가 매개변수로 주어질 때,
+가능한 스킬트리 개수를 return 하는 solution 함수를 작성해주세요.
+
+
+
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+import Foundation
+
+func solution(_ skill:String, _ skill_trees:[String]) -> Int {
+    var skills = skill
+    var skillArray = [String]()
+    var trees = skill_trees
+    var seq = 0
+    var canNum = 0
+
+    for i in skills {
+        var string = String(i)
+        skillArray.append(string)
+    }
+
+    for i in 0..<trees.count {
+        var tree = [String]()
+        var index = [Int](repeating: 0, count: skillArray.count)
+        for j in trees[i] {
+            let string = String(j)
+            tree.append(string)
+        }
+
+        for i in 0 ..< skillArray.count {
+            for j in 0 ..< tree.count {
+                if skillArray[i] == tree[j] {
+                    index[i] = j + 1
+                    break
+                }
+            }
+        }
+        if index.isEmpty || index.count == 1{
+            canNum = trees.count
+        } else {
+            while index.count > 0 {
+                var j = 1
+
+                if index[0] == 0 {
+                    if index[0] == index[1] {
+                        index.removeFirst()
+                        if index.count == 1 {
+                            canNum += 1
+                            break
+                        }
+                        continue
+                    } else {
+                        break
+                    }
+                } else {
+                    if index[0] < index[1] || index[1] == 0 {
+                        index.removeFirst()
+                        if index.count == 1 {
+                            canNum += 1
+                            break
+                        }
+                        continue
+                    } else {
+                        break
+                    }
+                }
+            }
+        }
+    }
+    return canNum
+}
