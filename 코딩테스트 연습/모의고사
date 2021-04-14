@@ -1,0 +1,87 @@
+1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열 answers가 주어졌을 때,
+가장 많은 문제를 맞힌 사람이 누구인지 배열에 담아 return 하도록 solution 함수를 작성해주세요.
+
+// 1. 번호 순서대로 찍는사람
+// 2. 홀수 문제는 2로 찍고 나머지는 순서대로 찍는사람
+// 3. 3 - 1 - 2 - 4 - 5 순으로 두번씩 찍는사람
+
+func solution(_ answers:[Int]) -> [Int] {
+    var ans = answers
+    var aAns = [Int]()
+    var bAns = [Int]()
+    var cs = [3,1,2,4,5]
+    var cAns = [Int]()
+    var seq = 1
+    var seq2 = 0
+    var aPoint = 0
+    var bPoint = 0
+    var cPoint = 0
+    var max = [Int]()
+    var maxPoint = 0
+    var result = [Int](repeating: 0, count: 3)
+    var finalResult = [Int]()
+    
+    for i in 0..<ans.count {
+        aAns.append((i % 5) + 1)
+    }
+    for i in 0..<ans.count {
+        if i % 2 == 0 {
+            bAns.append(2)
+        } else {
+            if seq == 2 {
+                seq += 1
+            }
+            bAns.append(seq)
+            seq += 1
+            if seq == 6 {
+                seq = 1
+            }
+        }
+    }
+    seq = 0
+    for i in 0..<ans.count {
+        seq += 1
+        cAns.append(cs[seq2])
+        if seq == 2 {
+            seq = 0
+            seq2 += 1
+            if seq2 == cs.count {
+                seq2 = 0
+            }
+        }
+    }
+    
+    for i in 0..<ans.count {
+        if aAns[i] == ans[i] {
+            aPoint += 1
+        }
+        if bAns[i] == ans[i] {
+            bPoint += 1
+        }
+        if cAns[i] == ans[i] {
+            cPoint += 1
+        }
+    }
+    max.append(aPoint)
+    max.append(bPoint)
+    max.append(cPoint)
+    
+    if aPoint == bPoint && bPoint == cPoint {
+        return [1,2,3]
+    } else {
+        for i in 0..<max.count {
+            if maxPoint < max[i] {
+                maxPoint = max[i]
+            }
+        }
+        for i in 0..<result.count {
+            if max[i] == maxPoint {
+                result[i] = i+1
+                finalResult.append(result[i])
+            }
+        }
+        
+        return finalResult
+    }
+    return []
+}
