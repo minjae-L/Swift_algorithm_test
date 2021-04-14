@@ -1,0 +1,32 @@
+2016년 1월 1일은 금요일입니다.
+2016년 a월 b일은 무슨 요일일까요? 
+두 수 a ,b를 입력받아 2016년 a월 b일이 무슨 요일인지 리턴하는 함수, solution을 완성하세요.
+
+
+func solution(_ a:Int, _ b:Int) -> String {
+    let string = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
+    var num = 0
+
+    if a == 5 {
+        num = 0
+    } else if a == 2 || a == 8 {
+        num = 1
+    } else if a == 3 || a == 11 {
+        num = 2
+    } else if a == 6 {
+        num = 3
+    } else if a == 9 || a == 12{
+        num = 4
+    } else if a == 1 || a == 4 || a == 7 {
+        num = 5
+    } else if a == 10 {
+        num = 6
+    }
+    for i in 1..<b {
+        num += 1
+        if num == 7 {
+            num = 0
+        }
+    }
+    return string[num]
+}
