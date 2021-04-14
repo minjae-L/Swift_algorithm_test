@@ -27,3 +27,4 @@ func solution(_ array:[Int], _ commands:[[Int]]) -> [Int] {
     }
     return []
 }
+
