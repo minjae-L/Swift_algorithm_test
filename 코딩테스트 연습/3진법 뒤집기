@@ -1,0 +1,53 @@
+자연수 n이 매개변수로 주어집니다.
+n을 3진법 상에서 앞뒤로 뒤집은 후,이를 다시 10진법으로 표현한 수를 return 하도록 solution 함수를 완성해주세요.
+
+func solution(_ n:Int) -> Int {
+    var num = n
+    var result = [Int](repeating: 0, count: 17)
+    var resultNum = 1
+    var result10Num = 0
+    var seq = result.count
+    var reverseResult = [Int]()
+
+    if num < 3 {
+        return num
+    }
+    while seq > 0 {
+        for i in 1..<seq {
+            resultNum *= 3
+        }
+        while num >= resultNum {
+            num -= resultNum
+            result[seq - 1] += 1
+        }
+            seq -= 1
+        resultNum = 1
+    }
+    seq = result.count - 1
+    while result[seq] < 1 {
+        result.remove(at: seq)
+        seq -= 1
+    }
+    reverseResult = result.reversed()
+    seq = 0
+    while seq < reverseResult.count {
+        var num = 1
+        
+        if seq == 0 {
+            result10Num += reverseResult[seq]
+            seq += 1
+        }
+        if reverseResult[seq] == 0 {
+            seq += 1
+            continue
+        } else {
+            
+        }
+        for i in 0..<seq {
+            num *= 3
+        }
+        result10Num = result10Num + (reverseResult[seq] * num)
+        seq += 1
+    }
+    return result10Num
+}
