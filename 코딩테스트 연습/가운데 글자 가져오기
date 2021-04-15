@@ -1,0 +1,32 @@
+단어 s의 가운데 글자를 반환하는 함수, solution을 만들어 보세요.
+단어의 길이가 짝수라면 가운데 두글자를 반환하면 됩니다.
+
+
+func solution(_ s:String) -> String {
+    
+    var result = ""
+    var strArr = [String]()
+    
+    for i in s {
+        strArr.append(String(i))
+    }
+    
+    if strArr.count % 2 == 0 {
+        while strArr.count > 2 {
+            strArr.removeLast()
+            strArr.removeFirst()
+        }
+        for i in 0..<strArr.count {
+            result = result + strArr[i]
+        }
+        return result
+    } else {
+        while strArr.count > 1 {
+            strArr.removeLast()
+            strArr.removeFirst()
+        }
+        result = strArr[0]
+        return result
+    }
+    return ""
+}
