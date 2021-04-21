@@ -1,0 +1,55 @@
+1부터 입력받은 숫자 n 사이에 있는 소수의 개수를 반환하는 함수, solution을 만들어 보세요.
+
+소수는 1과 자기 자신으로만 나누어지는 수를 의미합니다.
+(1은 소수가 아닙니다.)
+
+
+func solution(_ n:Int) -> Int {
+    var resultNum = 0
+    var result = [Int]()
+    for i in 2...1000 {
+        var check = true
+        if result.isEmpty {
+            result.append(i)
+        }
+        for j in 0..<result.count {
+            if i % result[j] == 0 {
+                check = false
+                break
+            }
+        }
+        if check {
+            result.append(i)
+        }
+    }
+    for i in 2...n {
+        var index = 0
+        var seq = 0
+        var check = true
+        
+        if i == 2 || i == 3 {
+            resultNum += 1
+            continue
+        }
+        for j in 1...i {
+            var num = j
+            if num * num > i {
+                index = num - 1
+                break
+            }
+        }
+        
+        while result[seq] <= index {
+            if i % result[seq] == 0 {
+                check = false
+                break
+            }
+            seq += 1
+        }
+        if check {
+            resultNum += 1
+        }
+
+    }
+    return resultNum
+}
