@@ -1,0 +1,68 @@
+순서대로 누를 번호가 담긴 배열 numbers, 왼손잡이인지 오른손잡이인 지를 나타내는 문자열 hand가 매개변수로 주어질 때,
+각 번호를 누른 엄지손가락이 왼손인 지 오른손인 지를 나타내는 연속된 문자열 형태로 return 하도록 solution 함수를 완성해주세요.
+
+
+import Foundation
+
+func solution(_ numbers:[Int], _ hand:String) -> String {
+    var nums = numbers
+    var keypads = [[1,2,3],[4,5,6],[7,8,9],[-1,0,-1]]
+    var result = ""
+    var currentL1 = 3
+    var currentL2 = 0
+    var currentR1 = 3
+    var currentR2 = 2
+    
+    
+    while nums.count > 0 {
+        let key = nums.removeFirst()
+        var lPoint = 0
+        var rPoint = 0
+        
+        var a = 0
+        var b = 0       
+        for i in 0..<keypads.count {
+            for j in 0..<3 {
+                if keypads[i][j] == key {
+                    a = i
+                    b = j
+                }
+            }
+        }
+        if key == 1 || key == 4 || key == 7 {
+            result = result + "L"
+            currentL1 = a
+            currentL2 = b
+            continue
+        } else if key == 3 || key == 6 || key == 9 {
+            result = result + "R"
+            currentR1 = a
+            currentR2 = b
+            continue
+        }
+        
+        lPoint = Int((currentL1 - a).magnitude + (currentL2 - b).magnitude)
+        rPoint = Int((currentR1 - a).magnitude + (currentR2 - b).magnitude)
+        
+        if lPoint == rPoint {
+            if hand == "right" {
+                result = result + "R"
+                currentR1 = a
+                currentR2 = b
+            } else {
+                result = result + "L"
+                currentL1 = a
+                currentL2 = b
+            }
+        } else if lPoint > rPoint {
+                result = result + "R"
+                currentR1 = a
+                currentR2 = b
+        } else {
+                result = result + "L"
+                currentL1 = a
+                currentL2 = b
+        }
+    }
+    return result
+}
