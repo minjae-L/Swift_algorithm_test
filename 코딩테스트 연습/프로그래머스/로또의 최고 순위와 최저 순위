@@ -1,0 +1,29 @@
+민우가 구매한 로또 번호를 담은 배열 lottos, 당첨 번호를 담은 배열 win_nums가 매개변수로 주어집니다.
+이때, 당첨 가능한 최고 순위와 최저 순위를 차례대로 배열에 담아서 return 하도록 solution 함수를 완성해주세요.
+
+
+
+import Foundation
+
+func solution(_ lottos:[Int], _ win_nums:[Int]) -> [Int] {
+    var min = lottos.filter{win_nums.contains($0)}.count
+    var max = lottos.filter{$0 == 0}.count + min
+    var result = [max,min]
+    
+    for i in 0..<result.count {
+        if result[i] == 6 {
+            result[i] = 1
+        } else if result[i] == 5 {
+            result[i] = 2
+        } else if result[i] == 4 {
+            result[i] = 3
+        } else if result[i] == 3 {
+            result[i] = 4
+        } else if result[i] == 2 {
+            result[i] = 5
+        } else {
+            result[i] = 6
+        }
+    }
+    return result
+}
