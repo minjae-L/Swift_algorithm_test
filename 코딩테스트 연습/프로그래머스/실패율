@@ -1,0 +1,33 @@
+전체 스테이지의 개수 N, 게임을 이용하는 사용자가 현재 멈춰있는 스테이지의 번호가 담긴 배열 stages가 매개변수로 주어질 때,
+실패율이 높은 스테이지부터 내림차순으로 스테이지의 번호가 담겨있는 배열을 return 하도록 solution 함수를 완성하라
+
+import Foundation
+
+func solution(_ N:Int, _ stages:[Int]) -> [Int] {
+    var stage = stages.sorted(by: {$0 < $1})
+    var failDic = [Int: Double]()
+    var stageNum = 0
+    var players = Double(stage.count)
+    
+    for i in 0..<N {
+        stageNum = i+1
+        var stagePlayers = Double(stage.filter({$0 == stageNum}).count)
+        var failPoint = stagePlayers / players
+        if stagePlayers == 0 && players == 0 {
+            failPoint = 0
+            failDic[stageNum] = failPoint
+        } else {
+            failDic[stageNum] = failPoint
+            players -= stagePlayers
+        }
+        
+    }
+    var sortedDic = failDic.sorted{ (first, second) -> Bool in
+        if first.value == second.value {
+            return first.key < second.key
+        } else {
+            return first.value > second.value
+        }
+    }
+    return sortedDic.map{$0.key}
+}
