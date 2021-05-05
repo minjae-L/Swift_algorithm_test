@@ -1,0 +1,24 @@
+n개의 음이 아닌 정수가 있습니다. 이 수를 적절히 더하거나 빼서 타겟 넘버를 만들려고 합니다.
+사용할 수 있는 숫자가 담긴 배열 numbers, 타겟 넘버 target이 매개변수로 주어질 때
+숫자를 적절히 더하고 빼서 타겟 넘버를 만드는 방법의 수를 return 하도록 solution 함수를 작성해주세요.
+
+// 깊이/너비탐색 분야를 확인하면서 재귀점 함수 호출이 필요하다고 생각했다
+// 재귀호출에 대해서 무지했기에 재귀호출의 구조를 알아보고 반드시 탈출값이 있어야하고 자신의 함수를 불러오는것을 깨달았다.
+// 그러는 도중 중복조합을 구하는 재귀적 함수 호출을 기억했고, return 을 두개 함수 호출을 더해서 + , - 로 모두 탐색 할 수 있도록 구현했다.
+
+
+
+import Foundation
+
+func solution(_ numbers:[Int], _ target:Int) -> Int {
+    var numArr = numbers
+    
+    
+    if target == 0 && numArr.count == 0 {
+        return 1
+    }else if numArr.count == 0 {
+        return 0
+    }
+    var num = numArr.removeFirst()
+    return solution(numArr, target + num) + solution(numArr, target - num)
+}
