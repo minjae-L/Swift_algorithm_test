@@ -1,0 +1,42 @@
+채팅방에 들어오고 나가거나, 닉네임을 변경한 기록이 담긴 문자열 배열 record가 매개변수로 주어질 때,
+모든 기록이 처리된 후, 최종적으로 방을 개설한 사람이 보게 되는 메시지를 문자열 배열 형태로 return 하도록 solution 함수를 완성하라.
+
+// 유저의 id와 닉네임이 실시간으로 변경되어 기록에 남겨지는 방법이 아니라 id로만 저장해 마지막에 닉네임으로 변경해주는 방법을 이용했다.
+
+
+
+import Foundation
+
+func solution(_ record:[String]) -> [String] {
+    var arr = [String]()
+    var resultArr = [String]()
+    var userDic = [String: String]()
+    var userArr = [String]()
+    var actArr = [String]()
+    
+    for i in record {
+        var strArr = String(i).components(separatedBy: " ")
+        switch strArr[0] {
+            case "Enter":
+                actArr.append("님이 들어왔습니다.")
+                userDic[strArr[1]] = strArr[2]
+                userArr.append(strArr[1])
+            case "Leave":
+                actArr.append("님이 나갔습니다.")
+                userArr.append(strArr[1])
+            case "Change":
+                userDic[strArr[1]] = strArr[2]
+            default:
+            print("Nothing")
+        }
+        
+    }
+    for i in 0..<userArr.count {
+        guard let nickname = userDic[userArr[i]] else { return [] }
+        userArr[i] = nickname
+    }
+    for i in 0..<userArr.count {
+        resultArr.append("\(userArr[i])" + "\(actArr[i])")
+    }
+    return resultArr
+}
