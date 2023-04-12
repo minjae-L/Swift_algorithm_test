@@ -1,8 +1,3 @@
-선행 스킬 순서 skill과 유저들이 만든 스킬트리1를 담은 배열 skill_trees가 매개변수로 주어질 때,
-가능한 스킬트리 개수를 return 하는 solution 함수를 작성해주세요.
-
-
-
 func solution(_ skill:String, _ skill_trees:[String]) -> Int {
     var skills = skill
     var skillArray = [String]()
