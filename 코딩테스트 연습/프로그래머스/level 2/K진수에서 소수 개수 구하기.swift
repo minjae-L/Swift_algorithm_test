@@ -40,6 +40,6 @@ func solution(_ n:Int, _ k:Int) -> Int {
         }
 
     }
-
+ 
     return result
 }
