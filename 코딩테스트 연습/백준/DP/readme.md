@@ -15,7 +15,7 @@ Memoization
 
 DP 의 예시) 피보나치수열
 피보나치 수열 fib(n) = fib(n-1) + fib(n-2)을 일반적으로 계산했을때, 재귀함수를 호출하여 계산한다.
-'''
+```
 import Foundation
 
 func fibonacci(_ num: Int) -> Int {
@@ -24,7 +24,7 @@ func fibonacci(_ num: Int) -> Int {
     }
     return fibonacci(num - 1) + fibonacci(num - 2)
 }
-'''
+```
 
 fib(4)
 = fib(3) + fib(2)
@@ -36,7 +36,7 @@ fib(4)
  
 
 DP의 Memoization기법을 이용하면 시간복잡도를 줄일 수 있다.
-'''
+```
 import Foundation
 
 func fibonacci(_ num: Int) -> Int {
@@ -53,7 +53,8 @@ func fibonacci(_ num: Int) -> Int {
     }
     return dp[num]
 }
-'''
+```
+
 예로 fib(5) 를 구하기위해
 dp[3] = dp[2] + dp[1] = fib(3) 을 저장후 dp[4]를 구할 때 재사용
 dp[4] = dp[3] + dp[2] = fib(4) 도 저장후 dp[5]를 구할 때 재사용
