@@ -27,9 +27,13 @@ func fibonacci(_ num: Int) -> Int {
 ```
 
 fib(4)
+
 = fib(3) + fib(2)
+
 = fib(2) + fib(1) + fib(1) + fib(0)
+
 = fib(1) + fib(0) + fib(1) + fib(1) + fib(0)
+
 ---> fib(4)를 구하기 위해 fib함수 5번 수행되었다.
 
 이와같이 일반적으로 계산하는 경우 fib(n)의 n이 커질수록 계산횟수는 기하급수적으로 증가하게된다. 시간복잡도 O(n^2)
@@ -56,8 +60,11 @@ func fibonacci(_ num: Int) -> Int {
 ```
 
 예로 fib(5) 를 구하기위해
+
 dp[3] = dp[2] + dp[1] = fib(3) 을 저장후 dp[4]를 구할 때 재사용
+
 dp[4] = dp[3] + dp[2] = fib(4) 도 저장후 dp[5]를 구할 때 재사용
+
 dp[5] = dp[4] + dp[3] = fib(5)
 
 위의 방법은 for문 한번만 돌기때문에 시간복잡도는 O(N) 이다.
