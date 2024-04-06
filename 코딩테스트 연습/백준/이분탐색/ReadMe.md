@@ -8,7 +8,7 @@
 
 
 ### 재귀호출
-'''
+```
 import Foundation
 // 이분탐색
 func binarySearch(arr: [Int], start: Int, end: Int, target: Int) -> Int {
@@ -30,10 +30,10 @@ func binarySearch(arr: [Int], start: Int, end: Int, target: Int) -> Int {
 var a = [1, 3, 4, 5, 7, 8]
 print(binarySearch(arr: a, start: 0, end: a.endIndex - 1, target: 3))
 // 1
-'''
+```
 
 ### 반복문
-'''
+```
 import Foundation
 
 func binarySearch(arr: [Int], start: Int, end: Int, target: Int) -> Int {
@@ -61,4 +61,4 @@ func binarySearch(arr: [Int], start: Int, end: Int, target: Int) -> Int {
 var a = [1, 3, 4, 5, 7, 8]
 print(binarySearch(arr: a, start: 0, end: a.endIndex - 1, target: 8))
 // 5
-'''
+```
