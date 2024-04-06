@@ -1,6 +1,6 @@
 # 이분탐색(Binary Search)
 
-![image](https://github.com/minjae-L/Swift_algorithm_test/assets/54211648/b6f56375-e41a-43b5-8b8b-34be674166ce)
+![binary-and-linear-search-animations](https://github.com/minjae-L/Swift_algorithm_test/assets/54211648/84f9ac4e-3e30-490e-aefb-7a12948266e6)
 
 - 정렬된 데이터안에서 탐색범위를 절반씩 좁혀가며 찾는 방식
 - 데이터가 정렬되어있어야함.
