@@ -17,8 +17,10 @@ func divide(_ xs: Int,_ xe: Int,_ ys: Int,_ ye: Int,_ arr: [[Character]]) -> Str
     if !check(xs,xe,ys,ye,arr) {
         let xm = (xs+xe)/2
         let ym = (ys+ye)/2
+        // 압축하는과정이므로 괄호로 감싼다.
         s = "(\(divide(xs, xm, ys, ym, arr))\(divide(xm+1, xe, ys, ym, arr))\(divide(xs, xm, ym+1, ye, arr))\(divide(xm+1, xe, ym+1, ye, arr)))"
     }
+    // 같은 원소로 이루어졌다면 배열의 왼쪽위 원소 출력
     return s
 }
 
