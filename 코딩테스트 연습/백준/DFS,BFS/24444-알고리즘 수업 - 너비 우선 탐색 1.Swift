@@ -21,7 +21,7 @@ for i in 0..<M {
         graph[e]?.append(s)
     }
 }
-// 깊이우선탐색 오름차순탐색을 위해 오름차순으로 정렬
+// 너비우선탐색 오름차순탐색을 위해 오름차순으로 정렬
 for i in 1...N {
     graph[i]?.sort{$0 < $1}
 }
@@ -42,7 +42,6 @@ while nodeIdx < needVisit.count {
     }
     // 시작점과 인접한 접점이 없는경우
     if graph[node] == nil {
-        
         continue
     }
     // 인접점중 방문하지않은 곳을 다음 방문순서로 넣는다.
