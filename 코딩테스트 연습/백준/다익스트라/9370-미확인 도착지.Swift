@@ -3,7 +3,7 @@ import Foundation
 // 테스트케이스 수
 let T = Int(readLine()!)!
 
-for i in 0..<T {
+for _ in 0..<T {
     // 입력받기
     let input1 = readLine()!.split(separator: " ").map{Int(String($0))!}
     let n = input1[0], m = input1[1], t = input1[2]
